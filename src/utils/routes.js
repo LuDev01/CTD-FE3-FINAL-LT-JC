@@ -4,5 +4,5 @@ export const routes={
     detail: "/dentista/:id",
     favs: "/favs",
     contact: "/contacto",
-    error: "/error"
+    error: "*"
 }

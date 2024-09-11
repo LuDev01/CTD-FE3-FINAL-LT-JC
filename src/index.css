@@ -115,3 +115,8 @@ tr:nth-child(even) {
 .dark > a {
   color: white;
 }
+
+.prueba{
+  font-size: 5rem;
+  color:brown;
+}

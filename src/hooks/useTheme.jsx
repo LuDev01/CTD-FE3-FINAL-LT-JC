@@ -1,14 +1,14 @@
 import { useColorScheme } from "@mui/joy";
 import { useDentistStates } from "../Components/utils/global.context"
 import { useEffect } from "react";
-import theme from "../utils/theme";
+
 
 export const useTheme = () => {
 
-    //Variables   
+    //Context   
     const { state, dispatch } = useDentistStates();
     const { systemMode, setMode } = useColorScheme();
-    const initialTheme = localStorage.getItem("theme") || systemMode
+    
 
     //Métodos
     const setTheme = (theme) => {
@@ -25,14 +25,10 @@ export const useTheme = () => {
     }, [])
 
 
-
-
-
     return {
         currentTheme: state.theme,
+        isDark: state.theme === 'dark',
         setTheme
-
-
 
     }
 

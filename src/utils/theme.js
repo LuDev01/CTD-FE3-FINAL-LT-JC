@@ -2,6 +2,10 @@
 import { extendTheme } from '@mui/joy/styles';
 
 const theme = extendTheme({
+  "fontFamily": {
+    "display": "'SUSE', sans-serif", // applies to `h1`–`h4`
+    "body": "'SUSE', sans-serif", // applies to `title-*` and `body-*`
+  },
   "colorSchemes": {
     "light": {
       "palette": {
@@ -66,3 +70,20 @@ const theme = extendTheme({
 })
 
 export default theme;
+
+
+// Custom Styles
+//Navbar
+
+const linkStyles = { 
+  cursor: 'pointer',
+  transition: 'all 0.3s ease',
+  '&:hover': {
+    color: 'primary.100',
+    transform: 'scale(1.05)'
+  }
+}
+
+export {
+  linkStyles,
+}

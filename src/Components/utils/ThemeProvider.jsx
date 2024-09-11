@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { CssVarsProvider } from "@mui/joy"
+import { CssBaseline, CssVarsProvider } from "@mui/joy"
 import theme from "../../utils/theme"
 
 
@@ -9,6 +9,7 @@ const ThemeProvider = ({children}) => {
   return (
 
     <CssVarsProvider theme={theme} disableNestedContext >
+       <CssBaseline />
         {children}
     </CssVarsProvider>
   )

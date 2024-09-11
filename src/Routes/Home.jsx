@@ -1,6 +1,6 @@
 // import React from 'react'
 // import Card from '../Components/Card'
-import { Box,Button } from '@mui/joy';
+import { Box,Button, Typography } from '@mui/joy';
 import {useDentistStates} from '../Components/utils/global.context'
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
   
@@ -20,23 +20,12 @@ const Home = () => {
 
 
   return (
-    <Box
-    component="section"
-    sx={{
-      height: '100vh',  // Full page height
-      backgroundColor: mode === 'dark' ? '#121212' : '#fff',  // Background color based on mode
-      color: mode === 'dark' ? '#fff' : '#000',  // Text color based on mode
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      flexDirection: 'column',
-    }}
-  >
-    <p>Current mode: {mode}</p>
-    <Button variant="outlined" color="neutral" onClick={handleToggle}>
-      Toggle {mode === 'dark' ? 'Light' : 'Dark'} Mode
-    </Button>
-  </Box>
+    <Box component="section" >
+      <Typography component="h2" >Current mode: {mode}</Typography>
+      <Button variant="outlined" color="neutral" onClick={handleToggle}>
+        Toggle {mode === 'dark' ? 'Light' : 'Dark'} Mode
+      </Button>
+    </Box>
   )
 }
 

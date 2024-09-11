@@ -1,18 +1,21 @@
-import { CssVarsProvider, useColorScheme } from "@mui/joy"
-import { extendTheme } from '@mui/joy/styles';
+import PropTypes from 'prop-types'
+import { CssVarsProvider } from "@mui/joy"
+import theme from "../../utils/theme"
 
-const theme = extendTheme({
-  colorSchemeSelector: 'media',
-});
 
 const ThemeProvider = ({children}) => {
 
+
   return (
 
-<CssVarsProvider theme={theme}>
-    {children}
-</CssVarsProvider>
+    <CssVarsProvider theme={theme} disableNestedContext >
+        {children}
+    </CssVarsProvider>
   )
 }
 
 export default ThemeProvider
+
+ThemeProvider.propTypes = {
+  children: PropTypes.node.isRequired
+}

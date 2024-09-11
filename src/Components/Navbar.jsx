@@ -1,4 +1,4 @@
-import { Box } from '@mui/joy'
+import { Box, Typography } from '@mui/joy'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { routes } from '../utils/routes'
@@ -8,26 +8,13 @@ import { routes } from '../utils/routes'
 const Navbar = () => {
 
   return (
-<Box component='nav' theme={'dark'} 
-    sx={{
-      width:'100%',
-      height: '60px',  // Full page height
-      backgroundColor: 'red',  // Background color based on mode
-      color: '#fff',  // Text color based on mode
-      display: 'flex',
-      justifyContent: 'space-evenly',
-      alignItems: 'center',
-    }}
-
->
+<Box component='nav'  >
   
-<Box component='h2'
- sx ={{
-  fontSize:'2rem'
- }}
+<Typography component='h2' 
+ 
 >
 Clino
-</Box>
+</Typography>
 
 
 <Box component='ul'

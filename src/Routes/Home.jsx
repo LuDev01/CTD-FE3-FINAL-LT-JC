@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <Box component="section" >
       <Typography component="h2" >Current mode: {mode}</Typography>
-      <Button variant="outlined" color="neutral" onClick={handleToggle}>
+      <Button variant="outlined" color="primary" onClick={handleToggle}>
         Toggle {mode === 'dark' ? 'Light' : 'Dark'} Mode
       </Button>
     </Box>

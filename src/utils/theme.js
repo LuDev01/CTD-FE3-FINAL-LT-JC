@@ -1,4 +1,5 @@
 
+import { Margin } from '@mui/icons-material';
 import { extendTheme } from '@mui/joy/styles';
 
 const theme = extendTheme({
@@ -84,6 +85,26 @@ const linkStyles = {
   }
 }
 
+
+const homeStyles = {
+ 
+  main: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    minHeight: '80vh',
+    width: '100%',
+    maxWidth: '1440px',
+    padding: '40px 0',
+    margin: '0  auto'
+    
+  }
+
+}
+
+
 export {
   linkStyles,
+  homeStyles,
 }

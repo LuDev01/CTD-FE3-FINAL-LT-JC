@@ -97,9 +97,14 @@ const homeStyles = {
     width: '100%',
     maxWidth: '1440px',
     padding: '40px 0',
-    margin: '0  auto'
+    margin: '0  auto',
+    
+  },
+  gridContainer:{
+    paddingTop:'30px',
     
   }
+  
 
 }
 

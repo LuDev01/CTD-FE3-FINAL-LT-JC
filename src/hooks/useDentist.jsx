@@ -8,7 +8,6 @@ export const useDentist = () => {
     const { state, dispatch } = useDentistStates();
     const [isLoading, setIsLoading] = useState(false);
 
-
     const setDentist = (dentist) => {
         dispatch({ type: '[Dentist] setDentist', payload: dentist });
     }
@@ -19,25 +18,62 @@ export const useDentist = () => {
             setIsLoading(true);
         }
         axios.get("https://jsonplaceholder.typicode.com/users")
-        .then(data=>{setDentist(data)}).catch(err=>{console.error(err)});
+        .then(({data})=>{setDentist(data)}).catch(err=>{console.error(err)});
 
         setIsLoading(false);
 
     }
 
+    const getFavDentist=()=>{
+        const favs= JSON.parse(localStorage.getItem('fav')) || []        
+        return favs
+    }
+
+    const isFavorite=(dentist)=>{
+       if(!dentist) return false
+        const isFav=getFavDentist().some(item=>{
+            console.log('item id:',item.id);
+            console.log('dentist id:',dentist.id);
+            return  item.id && item.id === dentist.id
+        })
+     
+        
+        console.log('is fav:',isFav);
+        
+        return isFav
+    }
+
+    const toggleFavDentist=(dentist)=>{
+        let newList=getFavDentist();
+        
+        if (isFavorite(dentist)){
+            newList= newList.filter(item=>item.id  !== dentist.id)
+        }
+        else{
+            newList =[...newList,dentist]
+        }
+        dispatch({type:'[Dentist] setFavs',payload:newList})
+        localStorage.setItem('fav',JSON.stringify(newList))
+
+    }
+
+
+
     useEffect(() => {
+        getDentist();
+        dispatch({type:'[Dentist] setFavs',payload:getFavDentist()})
     }, [])
-    getDentist();
     
 
  
   
   
-  
     return {
         dentistList: state.data,
-        isLoading
-
+        isLoading,
+        toggleFavDentist,
+        favList:state.favs,
+        isFavorite
     }
   
 }

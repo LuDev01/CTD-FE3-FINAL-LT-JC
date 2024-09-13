@@ -19,21 +19,22 @@ export const useDentist = () => {
             setIsLoading(true);
         }
         axios.get("https://jsonplaceholder.typicode.com/users")
-        .then(({data})=>{setDentist(data)}).catch(err=>{console.error(err)});
+        .then(({data})=>{
+            setDentist(data);
+            setIsLoading(false);
+        }).catch(err=>{console.error(err)});
 
-        setIsLoading(false);
+        
     }
 
     const getDentistById = async (id) => {
-        
         setIsLoading(true);
-        
         axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-        .then(({data})=>{setDentistData(data)})
+        .then(({data})=>{
+            setDentistData(data)
+            setIsLoading(false);
+        })
         .catch(err=>{console.error(err)});
-
-        setIsLoading(false);
-        
     }
 
     const clearDentist = () => {
@@ -68,19 +69,12 @@ export const useDentist = () => {
 
     }
 
-
-
     useEffect(() => {
         getDentist();
         dispatch({type:'[Dentist] setFavs',payload:getFavDentist()})
 
-        console.log("useeffect");
-
     }, [])
     
-
- 
-  
   
     return {
         

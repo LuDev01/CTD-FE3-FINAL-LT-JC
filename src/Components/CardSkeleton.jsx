@@ -1,7 +1,5 @@
 import { AspectRatio, Card, Skeleton, Typography } from "@mui/joy"
 
-
-
 export const CardSkeleton = () => {
   return (
     <Card variant="outlined" sx={{ width: 343, display: 'flex', gap: 2 }}>

@@ -7,6 +7,7 @@ export const useDentist = () => {
     //Context   
     const { state, dispatch } = useDentistStates();
     const [isLoading, setIsLoading] = useState(false);
+    const [dentistData, setDentistData] = useState({});
 
     const setDentist = (dentist) => {
         dispatch({ type: '[Dentist] setDentist', payload: dentist });
@@ -21,7 +22,22 @@ export const useDentist = () => {
         .then(({data})=>{setDentist(data)}).catch(err=>{console.error(err)});
 
         setIsLoading(false);
+    }
 
+    const getDentistById = async (id) => {
+        
+        setIsLoading(true);
+        
+        axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(({data})=>{setDentistData(data)})
+        .catch(err=>{console.error(err)});
+
+        setIsLoading(false);
+        
+    }
+
+    const clearDentist = () => {
+        setDentistData({});
     }
 
     const getFavDentist=()=>{
@@ -32,14 +48,9 @@ export const useDentist = () => {
     const isFavorite=(dentist)=>{
        if(!dentist) return false
         const isFav=getFavDentist().some(item=>{
-            console.log('item id:',item.id);
-            console.log('dentist id:',dentist.id);
             return  item.id && item.id === dentist.id
         })
-     
-        
-        console.log('is fav:',isFav);
-        
+
         return isFav
     }
 
@@ -62,6 +73,9 @@ export const useDentist = () => {
     useEffect(() => {
         getDentist();
         dispatch({type:'[Dentist] setFavs',payload:getFavDentist()})
+
+        console.log("useeffect");
+
     }, [])
     
 
@@ -69,11 +83,16 @@ export const useDentist = () => {
   
   
     return {
+        
         dentistList: state.data,
+        dentist: dentistData,
+        getDentistById,
+        clearDentist,
         isLoading,
         toggleFavDentist,
-        favList:state.favs,
+        favList: state.favs,
         isFavorite
+
     }
   
 }

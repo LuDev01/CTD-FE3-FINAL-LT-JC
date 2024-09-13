@@ -1,17 +1,33 @@
-import React from 'react'
-
-
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
+import { useEffect } from 'react'
+import { useDentist } from "../hooks/useDentist";
+import DentistCard from '../Components/Card';
+import { useParams } from 'react-router-dom';
+import { Typography } from '@mui/joy';
 
 const Detail = () => {
  
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+  
+  const {id} = useParams();
+  const {  dentist, getDentistById, isLoading, clearDentist, toggleFavDentist, isFavorite } = useDentist();
+
+  console.log(dentist.company);
+
+  useEffect(() => {
+    getDentistById(id);
+  
+    return () => {
+      clearDentist();
+    }
+  }, [])
+  
+  
 
   return (
     <>
-      <h1>Detail Dentist id </h1>
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
+      <Typography component="h1" level="h1" sx={{ marginBottom: '20px' }} >Detail Dentist id: {id}</Typography>
+      
+      <DentistCard dentist={dentist} toggleFavDentist={toggleFavDentist} isFavorite={isFavorite} details={true} />
+      
     </>
   )
 }

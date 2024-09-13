@@ -1,5 +1,3 @@
-
-import { Margin } from '@mui/icons-material';
 import { extendTheme } from '@mui/joy/styles';
 
 const theme = extendTheme({
@@ -100,10 +98,8 @@ const homeStyles = {
     margin: '0  auto',
     
   },
-  gridContainer:{
-    paddingTop:'30px',
-    
-  }
+  
+  
   
 
 }

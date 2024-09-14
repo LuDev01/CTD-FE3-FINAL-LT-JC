@@ -25,13 +25,13 @@ const Navbar = () => {
         background: '#9333ea'
       }}
     >
-
-      <Typography component='h2' level='h1'
+      <Link to={routes.home}>
+        <Typography component='h2' level='h1'
         // sx={{ fontSize: '2rem',}}
-      >
-        Clino
-      </Typography>
-
+        >
+          Clino
+        </Typography>
+      </Link>
 
       <Box component='ul'
         sx={{
@@ -41,17 +41,17 @@ const Navbar = () => {
         }}
       >
         <Link to={routes.home}>
-          <Typography 
-            level={location.pathname === routes.home ? "title-lg" : "title-md"}  
+          <Typography
+            level={location.pathname === routes.home ? "title-lg" : "title-md"}
             textColor={location.pathname === routes.home ? "primary.100" : "neutral.300"}
             sx={linkStyles}
           >
             Home
-          </Typography> 
+          </Typography>
         </Link>
         <Link to={routes.favs}>
-          <Typography 
-            level={location.pathname === routes.favs ? "title-lg" : "title-md"}  
+          <Typography
+            level={location.pathname === routes.favs ? "title-lg" : "title-md"}
             textColor={location.pathname === routes.favs ? "primary.100" : "neutral.300"}
             sx={linkStyles}
           >
@@ -59,8 +59,8 @@ const Navbar = () => {
           </Typography>
         </Link>
         <Link to={routes.contact} >
-          <Typography 
-            level={location.pathname === routes.contact ? "title-lg" : "title-md"}  
+          <Typography
+            level={location.pathname === routes.contact ? "title-lg" : "title-md"}
             textColor={location.pathname === routes.contact ? "primary.100" : "neutral.300"}
             sx={linkStyles}
           >

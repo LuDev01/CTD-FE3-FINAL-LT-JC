@@ -1,10 +1,9 @@
-import React from "react";
-import Card from "../Components/Card";
-import { Grid, Typography } from "@mui/joy";
-import { useDentist } from "../hooks/useDentist";
-import { homeStyles } from "../utils/theme";
+import { Link } from "react-router-dom";
+import { Box, Grid, Typography } from "@mui/joy";
 import { CardSkeleton } from "../Components/CardSkeleton";
 import DentistCard from "../Components/Card";
+import { useDentist } from "../hooks/useDentist";
+import { routes } from "../utils/routes";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -31,13 +30,28 @@ const Favs = () => {
             </>
           ) : (
             <>
-              {favList.map(dentist => (
+              {
+                favList.length === 0 ? (
+                  <Grid sx={{ gridColumnStart: 1, gridColumnEnd: 5, justifyContent: 'center' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '30px' }} >
+                    <Typography component="h2" level="h2" sx={{ textAlign: 'center' }} >No tienes dentistas favoritos</Typography>
+                    <Link to={routes.home }>
+                      <CardSkeleton />
+                    </Link>
 
-                <Grid  key={dentist.id}>
-                  <DentistCard dentist={dentist} toggleFavDentist={toggleFavDentist} isFavorite={isFavorite} />
-                </Grid>
+                    </Box>
+                  </Grid>
+                ):(
+                  favList.map(dentist => (
 
-              ))}
+                    <Grid  key={dentist.id}>
+                      <DentistCard dentist={dentist} toggleFavDentist={toggleFavDentist} isFavorite={isFavorite} />
+                    </Grid>
+                  )
+                )
+                
+                
+              )}
             </>
           )
         }

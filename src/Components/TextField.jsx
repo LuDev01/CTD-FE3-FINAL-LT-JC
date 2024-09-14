@@ -56,23 +56,22 @@ const StyledLabel = styled('label')(({ theme }) => ({
 }));
 
 
-const TextField = ({type,placeholder,label,value,handleChange}) => {
+const InnerInput = React.forwardRef(function InnerInput(props, ref) {
+  const id = React.useId();
+  return (
+    <React.Fragment>
+      <StyledInput {...props} ref={ref} id={id} />
+      <StyledLabel htmlFor={id}>{props.label}</StyledLabel>
+    </React.Fragment>
+  );
+});
 
-    const InnerInput = React.forwardRef(function InnerInput(props, ref) {
-        const id = React.useId();
-        return (
-          <React.Fragment>
-            <StyledInput {...props} ref={ref} id={id} />
-            <StyledLabel htmlFor={id}>{label}</StyledLabel>
-          </React.Fragment>
-        );
-      });
-
+const TextField = ({type,placeholder,label,value,handleChange, required=false}) => {
 
   return (
       <Input
       slots={{ input: InnerInput }}
-      slotProps={{ input: { placeholder: placeholder, type: type, name:label} }}
+      slotProps={{ input: { placeholder, type, name:label, label, required } }}
       sx={{ '--Input-minHeight': '56px', '--Input-radius': '6px' }}
       value={value}
       onChange={handleChange}

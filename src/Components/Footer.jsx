@@ -1,10 +1,16 @@
-import React from 'react'
-
+import { Box } from "@mui/joy"
+import { useTheme } from "../hooks/useTheme";
 
 const Footer = () => {
+  
+  const { isDark } = useTheme();
+  
   return (
     <footer >
-      <div className='footer-div'>
+      <Box className='footer-div' sx={{ 
+        width: '100%',
+        background: 'rgba(147, 51, 234, 0.6)',
+       }} >
         <p className='footer-text'>Powered By: Luisa Toro & Julian Callejas</p>
         <div className='footer-logo-icons'>
           <img className='footer-img' src="/images/DH.png" alt='DH-logo' />
@@ -15,7 +21,7 @@ const Footer = () => {
             <img className='footer-icons' src="/images/ico-whatsapp.png"></img>
           </div>
         </div>
-      </div>
+      </Box>
     </footer>
   )
 }

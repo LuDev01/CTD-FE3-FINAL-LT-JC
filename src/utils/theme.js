@@ -36,9 +36,6 @@ const theme = extendTheme({
     },
     "dark": {
       "palette": {
-        "danger": {
-          "50": undefined
-        },
         "primary": {
           "50": "#f5f3ff",
           "100": "#ede9fe",
@@ -77,8 +74,9 @@ export default theme;
 const linkStyles = { 
   cursor: 'pointer',
   transition: 'all 0.3s ease',
+  color: '--joy-palette-text-primary.600',
   '&:hover': {
-    color: 'primary.100',
+    color: '--joy-palette-text-primary.900',
     transform: 'scale(1.05)'
   }
 }

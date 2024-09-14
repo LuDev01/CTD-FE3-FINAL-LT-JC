@@ -22,12 +22,16 @@ const Navbar = () => {
         width: '100%',
         display: 'flex',
         justifyContent: 'space-evenly',
-        background: '#9333ea'
+        alignItems: 'center',
+        // background: isDark ? '#8e36c3' : '#9333ea',
+        background: 'rgba(147, 51, 234, 0.6)',
+        padding: '1rem'
+        
       }}
     >
       <Link to={routes.home}>
         <Typography component='h2' level='h1'
-        // sx={{ fontSize: '2rem',}}
+         sx={{ textDecoration: 'none', }}
         >
           Clino
         </Typography>

@@ -10,9 +10,9 @@ const Footer = () => {
           <img className='footer-img' src="/images/DH.png" alt='DH-logo' />
           <div className='footer-all-icons'>
             <img className='footer-icons' src="/images/ico-facebook.png"></img>
-            <img className='footer-icons' src="/images/ico-facebook.png"></img>
-            <img className='footer-icons' src="/images/ico-facebook.png"></img>
-            <img className='footer-icons' src="/images/ico-facebook.png"></img>
+            <img className='footer-icons' src="/images/ico-instagram.png"></img>
+            <img className='footer-icons' src="/images/ico-tiktok.png"></img>
+            <img className='footer-icons' src="/images/ico-whatsapp.png"></img>
           </div>
         </div>
       </div>
